@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+           align-items: center;
+           
+            background-color: rgb(88, 107, 107);
+        }
+        .container{
+            border: 1.5px solid black;
+            width: 310px;
+            height: 420px;
+            border-radius: 12px;
+            background-color: #8a8484;
+            box-shadow: 8px 8px 6px rgba(0,0,0,0.3);
+
+            /* display: block; */
+            
+        }
+        .container-two{
+             border: 1.5px solid black;
+            width: 270px;
+            height: 120px;
+           
+            border-radius: 10px;
+            background-color: #f5f5dc;
+            margin-left: 18px;
+            margin-top: 10px;
+            box-shadow: 8px 8px 6px rgba(0,0,0,0.3);
+            
+
+        }
+        .container-three{
+            border: 1.5px solid black;
+            width: 275px;
+            height: 263px;
+           
+            border-radius: 10px;
+             margin-left: 12px;
+            margin-top: 5px;
+           display: grid;
+           gap: 10px;
+           padding: 5px;
+           grid-template-columns: repeat(4,1fr);
+            background-color: #c2bebe;
+        }
+        button{
+            
+            width: 100%;
+            height: 100%;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 6px ;
+            box-shadow: 4px 4px 2px rgba(0,0,0,0.3);
+            
+            
+        }
+        button:hover {
+    background-color: rgb(241, 239, 239); 
+    cursor: pointer;
+   
+    transform: scale(1.05); 
+    transition: all 0.2s ease; 
+}
+
+        .btn-clear{
+            
+            background-color: antiquewhite;
+            border-radius: 10px;
+            
+
+        }
+        .btn-plus{
+            grid-row: span 2;
+        }
+        input{
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            font-size: 32px;
+            text-align: right;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container-two"><input type="text" name="" id="aa"></div>
+         <div class="container-three">
+           <button class="btn-clear">Clear</button>
+           <button>←</button>
+           <button>/</button>
+           <button>*</button>
+           <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>-</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+             <button class="btn-plus">+</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>0</button>
+            <button>00</button>
+            <button>.</button>
+             <button>=</button>
+             
+             
+
+
+
+
+
+         </div>
+         
+
+
+
+
+
+
+    </div>
+
+    <script>
+let display = document.getElementById("aa")
+let buttons = document.querySelectorAll("button")
+display.value = display.value.slice(0, -1);
+
+buttons.forEach(function(btn){
+    btn.addEventListener("click", function(){
+        if(btn.innerText === "Clear"){
+            display.value = "";
+        } 
+        else if(btn.innerText === "="){
+            try{
+        display.value = eval(display.value);
+    }
+    catch{
+        display.value = "Error";
+    };
+        }
+      else if(btn.innerText === "←")  {
+        display.value = display.value.slice(0, -1);
+      }
+        else{
+            display.value += btn.innerText
+        }
+
+        display.scrollLeft = display.scrollWidth
+        
+    });
+});
+
+    
+    </script>
+</body>
+</html>
